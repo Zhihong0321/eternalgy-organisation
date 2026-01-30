@@ -1,0 +1,8 @@
+{
+  "name": "eternalgy-organisation",
+  "version": "1.0.0",
+  "description": "Eternalgy Organisation Chart Web App",
+  "scripts": {
+    "start": "npx serve . -l 8080"
+  }
+}
