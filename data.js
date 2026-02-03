@@ -50,28 +50,6 @@ const orgData = {
                 { id: "eng_dept", name: "Safwan", role: "Engineering Head", contact: "", dept: "engineering" },
                 { id: "it_dept", name: "Zhihong", role: "IT Head", contact: "", dept: "it" },
                 {
-                    id: "admin_dept",
-                    name: "Eli",
-                    role: "Admin Head",
-                    contact: "",
-                    dept: "admin",
-                    children: [
-                        { id: "adm1", name: "Aria", role: "Admin Team", contact: "", dept: "admin" }
-                    ]
-                },
-                {
-                    id: "finance_dept",
-                    name: "Sui",
-                    role: "Finance Head",
-                    contact: "",
-                    dept: "finance",
-                    children: [
-                        { id: "fin1", name: "Elantio", role: "Finance Assistant", contact: "", dept: "finance" },
-                        { id: "fin2", name: "Elene", role: "Finance Assistant", contact: "", dept: "finance" }
-                    ]
-                },
-                { id: "hr_dept", name: "Elise", role: "HR Head", contact: "", dept: "hr" },
-                {
                     id: "seremban_branch",
                     name: "Zhehang",
                     role: "Seremban Branch Assistant Manager",
@@ -129,7 +107,31 @@ const orgData = {
             name: "YinChiou",
             role: "Administrative",
             contact: "",
-            dept: "admin"
+            dept: "admin",
+            children: [
+                {
+                    id: "admin_dept",
+                    name: "Eli",
+                    role: "Admin Head",
+                    contact: "",
+                    dept: "admin",
+                    children: [
+                        { id: "adm1", name: "Aria", role: "Admin Team", contact: "", dept: "admin" }
+                    ]
+                },
+                {
+                    id: "finance_dept",
+                    name: "Sui",
+                    role: "Finance Head",
+                    contact: "",
+                    dept: "finance",
+                    children: [
+                        { id: "fin1", name: "Elantio", role: "Finance Assistant", contact: "", dept: "finance" },
+                        { id: "fin2", name: "Elene", role: "Finance Assistant", contact: "", dept: "finance" }
+                    ]
+                },
+                { id: "hr_dept", name: "Elise", role: "HR Head", contact: "", dept: "hr" }
+            ]
         }
     ]
 };

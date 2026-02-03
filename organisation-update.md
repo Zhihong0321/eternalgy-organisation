@@ -1,7 +1,7 @@
 # Organisation Update - January 2026
 
 **Meeting Date:** 01-31-2026
-**Document Version:** 1.3 (Moved Joshua)
+**Document Version:** 1.4 (Moved Admin/Finance/HR to YinChiou)
 
 ---
 
@@ -27,9 +27,26 @@
 
 ---
 
+## Administrative Hierarchy (Reporting to YinChiou)
+
+YinChiou oversees the administrative, financial, and human resource functions.
+
+### 1. Administration
+- **HoD:** Eli
+- **Team Members:** Aria.
+
+### 2. Finance
+- **HoD:** Sui
+- **Team Members:** Elantio, Elene.
+
+### 3. Human Resources (HR)
+- **HoD:** Elise
+
+---
+
 ## Operations Hierarchy (Reporting to KC Lim)
 
-KC Lim oversees the core technical and administrative departments of the organisation.
+KC Lim oversees the core technical and operational departments.
 
 ### 1. Project Department
 - **HoD:** Wilson
@@ -46,23 +63,12 @@ KC Lim oversees the core technical and administrative departments of the organis
 - **HoD:** Zhihong
 - **Reporting Line:** Reports to KC Lim for IT infrastructure/support.
 
-### 5. Administration
-- **HoD:** Eli
-- **Team Members:** Aria.
-
-### 6. Finance
-- **HoD:** Sui
-- **Team Members:** Elantio, Elene.
-
-### 7. Human Resources (HR)
-- **HoD:** Elise
-
-### 8. Branch Management (JB Branch)
+### 5. Branch Management (JB Branch)
 - **Seremban Branch Assistant Manager:** Zhehang
 - **Scrum Master:** Jui
 - **Team Members:** Martin.
 
-### 9. C&I Project
+### 6. C&I Project
 - **HoD:** Olivia (Reporting to KC for project-specific execution).
 
 ---
@@ -92,9 +98,9 @@ Leon heads the most value-dense department, focused on lead generation and brand
 
 ## Key Hierarchy Changes & Clarifications
 
-1.  **Joshua:** Moved from Project Department to **Digital Marketing / Social Media Group**.
-2.  **AI Kindergarten:** Zhihong leads this project, reporting **Directly to the CEO**.
-3.  **IT Department:** Zhihong reports to **KC Lim** for all IT infrastructure matters.
-4.  **Digital Marketing:** Zhihong assists **Leon** with algorithms and data.
-5.  **Leon's Dual Role:** Leon heads both Training and Digital Marketing, reporting to the CEO.
+1.  **Administrative Restructuring:** The **Admin**, **Finance**, and **HR** departments have been moved from KC Lim's oversight to **YinChiou**.
+2.  **Joshua:** Moved from Project Department to **Digital Marketing / Social Media Group**.
+3.  **AI Kindergarten:** Zhihong leads this project, reporting **Directly to the CEO**.
+4.  **IT Department:** Zhihong reports to **KC Lim** for all IT infrastructure matters.
+5.  **Digital Marketing:** Zhihong assists **Leon** with algorithms and data.
 6.  **New Roles to Fill:** Recruiting for Assistant COO (to assist KC) and AI Engineer (reporting to Zhihong in AI Kindergarten).

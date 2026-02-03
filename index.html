@@ -228,12 +228,81 @@
             #mobile-view { display: block; }
             .controls .view-toggle { display: none; }
         }
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: #fff;
+            padding: 24px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .modal h2 { font-size: 1rem; margin-bottom: 16px; font-weight: 600; }
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            margin-bottom: 16px;
+            font-family: inherit;
+        }
+
+        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
+        
+        #edit-indicator {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            display: none;
+            z-index: 1000;
+            letter-spacing: 0.05em;
+        }
     </style>
 </head>
 <body>
 
+<div id="edit-indicator">✏️ EDIT MODE ACTIVE</div>
+
+<div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+        <h2>Edit Name</h2>
+        <input type="text" id="edit-name-input" placeholder="Enter name...">
+        <div class="modal-actions">
+            <button onclick="closeEditModal()">Cancel</button>
+            <button class="active" onclick="applyNameChange()">Save</button>
+        </div>
+    </div>
+</div>
+
 <div class="floating-menu">
     <div id="menu-drawer" class="drawer">
+        <h3>Controls</h3>
+        <button id="btn-edit" onclick="toggleEditMode()">Enable Edit Mode</button>
+        <hr style="margin: 8px 0; border: none; border-top: 1px solid #eee;">
         <h3>View Mode</h3>
         <button id="btn-desktop" class="active" onclick="setView('desktop')">Desktop (Tree)</button>
         <button id="btn-mobile" onclick="setView('mobile')">Mobile (List)</button>
@@ -248,6 +317,55 @@
 
 <script src="data.js"></script>
 <script>
+    let editMode = false;
+    let selectedNodeData = null;
+
+    function toggleEditMode() {
+        editMode = !editMode;
+        const btn = document.getElementById('btn-edit');
+        const indicator = document.getElementById('edit-indicator');
+        
+        if (editMode) {
+            btn.innerHTML = 'Disable Edit Mode';
+            btn.style.color = 'red';
+            indicator.style.display = 'block';
+            document.body.style.cursor = 'crosshair';
+        } else {
+            btn.innerHTML = 'Enable Edit Mode';
+            btn.style.color = '';
+            indicator.style.display = 'none';
+            document.body.style.cursor = 'default';
+        }
+        document.getElementById('menu-drawer').classList.remove('active');
+        renderDesktop(); // Re-render to update click handlers
+    }
+
+    function openEditModal(d) {
+        selectedNodeData = d.data;
+        document.getElementById('edit-name-input').value = selectedNodeData.name;
+        document.getElementById('edit-modal').classList.add('active');
+    }
+
+    function closeEditModal() {
+        document.getElementById('edit-modal').classList.remove('active');
+        selectedNodeData = null;
+    }
+
+    function applyNameChange() {
+        if (selectedNodeData) {
+            const newName = document.getElementById('edit-name-input').value;
+            selectedNodeData.name = newName;
+            
+            // Refresh views
+            if (document.getElementById('desktop-view').style.display === 'block') {
+                renderDesktop();
+            } else {
+                renderMobile();
+            }
+            closeEditModal();
+        }
+    }
+
     function toggleDrawer() {
         document.getElementById('menu-drawer').classList.toggle('active');
     }
@@ -335,7 +453,11 @@
             .data(root.descendants())
             .enter().append("g")
             .attr("class", "node")
-            .attr("transform", d => `translate(${d.y},${d.x})`);
+            .attr("transform", d => `translate(${d.y},${d.x})`)
+            .style("cursor", editMode ? "pointer" : "default")
+            .on("click", (event, d) => {
+                if (editMode) openEditModal(d);
+            });
 
         node.append("circle")
             .attr("r", 4)
