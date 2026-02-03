@@ -1,7 +1,7 @@
 // Eternalgy Organisation Chart Data - Standardized Official Names Jan 2026
 const orgData = {
     id: "ceo",
-    name: "Gan Lai Hock",
+    name: "Gan Lai Soon",
     role: "CEO / Acting Outsource Head",
     contact: "",
     dept: "ceo",
@@ -59,6 +59,13 @@ const orgData = {
                         { id: "jb1", name: "Ling Liang Kang", role: "Scrum Master", contact: "", dept: "admin" },
                         { id: "jb2", name: "Hing Swee Chuan", role: "Team Member", contact: "", dept: "admin" }
                     ]
+                },
+                {
+                    id: "kluang_branch",
+                    name: "Gan Lai Hock",
+                    role: "Kluang Branch Manager",
+                    contact: "",
+                    dept: "admin"
                 },
                 {
                     id: "ci_project",

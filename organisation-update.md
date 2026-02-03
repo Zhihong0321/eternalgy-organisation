@@ -1,14 +1,14 @@
 # Organisation Update - January 2026
 
 **Meeting Date:** 01-31-2026
-**Document Version:** 1.5 (Sync with Official Name List 6)
+**Document Version:** 1.6 (Corrected CEO & Kluang Branch)
 
 ---
 
 ## Executive Level
 
 ### CEO (Chief Executive Officer)
-- **Name:** Gan Lai Hock
+- **Name:** Gan Lai Soon
 - **Key Responsibilities:** Overall strategy, final decision-making, acting Outsource Head.
 
 ---
@@ -63,10 +63,11 @@ Lim Kai Zhe oversees the core technical and operational departments.
 - **HoD:** Gan Zhi Hong
 - **Reporting Line:** Reports to Lim Kai Zhe for IT infrastructure/support.
 
-### 5. Branch Management (Seremban)
-- **Assistant Manager:** Ching Zhe Hang
-- **Scrum Master:** Ling Liang Kang
-- **Team Members:** Hing Swee Chuan.
+### 5. Branch Management
+- **Seremban Branch Assistant Manager:** Ching Zhe Hang
+- **Kluang Branch Manager:** Gan Lai Hock
+- **Scrum Master (Seremban):** Ling Liang Kang
+- **Team Members (Seremban):** Hing Swee Chuan.
 
 ### 6. C&I Project
 - **HoD:** Koh Chong Lee (Reporting to Lim Kai Zhe for project-specific execution).
@@ -91,7 +92,8 @@ Chong Kien Leong heads the most value-dense department.
 
 ## Key Hierarchy Changes & Clarifications
 
-1.  **Official Names Sync:** All names updated to match **Name List-6.pdf**.
-2.  **Administrative Restructuring:** Admin, Finance, and HR report to **Lai Ying Shan**.
-3.  **AI Kindergarten:** Gan Zhi Hong leads this project, reporting **Directly to the CEO**.
-4.  **IT Department:** Gan Zhi Hong reports to **Lim Kai Zhe** for IT matters.
+1.  **Corrected CEO Role:** Gan Lai Soon remains as **CEO**.
+2.  **Kluang Branch:** **Gan Lai Hock** is the **Kluang Branch Manager** reporting to Lim Kai Zhe.
+3.  **Official Names Sync:** All names synchronized with official HR records.
+4.  **Administrative Restructuring:** Admin, Finance, and HR report to **Lai Ying Shan**.
+5.  **AI Kindergarten:** Gan Zhi Hong leads this project, reporting **Directly to the CEO**.
