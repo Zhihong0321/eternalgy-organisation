@@ -111,7 +111,7 @@ const orgData = {
         },
         {
             id: "administrative_top",
-            name: "Lai Ying Shan",
+            name: "Teoh Yin Chiou",
             role: "Administrative",
             contact: "",
             dept: "admin",

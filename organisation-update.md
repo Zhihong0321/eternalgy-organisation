@@ -1,7 +1,7 @@
 # Organisation Update - January 2026
 
 **Meeting Date:** 01-31-2026
-**Document Version:** 1.6 (Corrected CEO & Kluang Branch)
+**Document Version:** 1.7 (Corrected Administrative Name)
 
 ---
 
@@ -23,13 +23,13 @@
 | **Digital Marketing** | **Chong Kien Leong** | Directly to CEO |
 | **Procurement** | **Wong Wei Hao** | Directly to CEO |
 | **Strategy & Partnership** | **Koh Chong Lee** | Directly to CEO |
-| **Administrative** | **Lai Ying Shan** | Directly to CEO |
+| **Administrative** | **Teoh Yin Chiou** | Directly to CEO |
 
 ---
 
-## Administrative Hierarchy (Reporting to Lai Ying Shan)
+## Administrative Hierarchy (Reporting to Teoh Yin Chiou)
 
-Lai Ying Shan oversees the administrative, financial, and human resource functions.
+Teoh Yin Chiou oversees the administrative, financial, and human resource functions.
 
 ### 1. Administration
 - **HoD:** Yap Yuet Kwan
@@ -92,8 +92,7 @@ Chong Kien Leong heads the most value-dense department.
 
 ## Key Hierarchy Changes & Clarifications
 
-1.  **Corrected CEO Role:** Gan Lai Soon remains as **CEO**.
+1.  **Administrative Head Corrected:** Teoh Yin Chiou is the head of the **Administrative** department reporting to the CEO.
 2.  **Kluang Branch:** **Gan Lai Hock** is the **Kluang Branch Manager** reporting to Lim Kai Zhe.
 3.  **Official Names Sync:** All names synchronized with official HR records.
-4.  **Administrative Restructuring:** Admin, Finance, and HR report to **Lai Ying Shan**.
-5.  **AI Kindergarten:** Gan Zhi Hong leads this project, reporting **Directly to the CEO**.
+4.  **AI Kindergarten:** Gan Zhi Hong leads this project, reporting **Directly to the CEO**.
