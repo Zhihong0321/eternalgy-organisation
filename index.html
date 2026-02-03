@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternalgy Organisation Chart</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #000;
+            --secondary: #666;
+            --accent: #2563eb;
+            --bg: #ffffff;
+            --line: #e5e7eb;
+            --text-main: #111827;
+            --text-sub: #6b7280;
+            --ceo-color: #000;
+            --gm-color: #374151;
+            --dept-color: #4b5563;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,522 +29,395 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
             overflow: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 30px;
+        /* Floating Menu Style */
+        .floating-menu {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
         }
 
-        .header h1 {
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-
-        .header .date {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .controls {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            padding: 8px 16px;
+        .menu-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
             border: none;
-            border-radius: 6px;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            font-size: 20px;
+            transition: transform 0.2s;
         }
 
-        .btn-primary {
-            background: white;
-            color: #667eea;
+        .menu-btn:hover {
+            transform: scale(1.05);
         }
 
-        .btn-primary:hover {
-            background: #f0f0f0;
+        .drawer {
+            position: fixed;
+            bottom: 84px;
+            right: 24px;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 180px;
         }
 
-        .btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
+        .drawer.active {
+            display: flex;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.3);
+        .drawer button {
+            text-align: left;
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: 1px solid transparent;
         }
 
-        #chart-container {
-            width: 100vw;
-            height: calc(100vh - 70px);
-            overflow: hidden;
-            position: relative;
+        .drawer button:hover {
+            background: #f3f4f6;
         }
 
-        .node {
-            cursor: pointer;
-        }
-
-        .node rect {
-            fill: white;
-            stroke: #667eea;
-            stroke-width: 2px;
-            rx: 8;
-            ry: 8;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-            transition: all 0.3s;
-        }
-
-        .node:hover rect {
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-            stroke-width: 3px;
-        }
-
-        .node text {
-            font-size: 12px;
-            fill: #333;
-        }
-
-        .node .name {
-            font-weight: 600;
-            font-size: 15px;
-            fill: #333;
-        }
-
-        .node .role {
+        .drawer h3 {
             font-size: 11px;
-            fill: #666;
-            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+            padding: 0 16px;
         }
 
-        .node .contact {
-            font-size: 10px;
-            fill: #999;
+        /* Chart Viewports */
+        #desktop-view {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            background: #fff;
+        }
+
+        #mobile-view {
+            display: none;
+            padding: 40px 20px;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        /* D3 Elements Styling */
+        .node circle {
+            fill: #fff;
+            stroke: var(--primary);
+            stroke-width: 2px;
         }
 
         .link {
             fill: none;
-            stroke: #bbb;
             stroke-width: 2px;
+            opacity: 0.6;
         }
 
-        /* Department colors */
-        .node.ceo rect { stroke: #e74c3c; }
-        .node.gm rect { stroke: #e67e22; }
-        .node.cao rect { stroke: #e67e22; }
-        .node.training rect { stroke: #3498db; }
-        .node.event rect { stroke: #3498db; }
-        .node.project rect { stroke: #9b59b6; }
-        .node.om rect { stroke: #1abc9c; }
-        .node.engineering rect { stroke: #1abc9c; }
-        .node.it rect { stroke: #1abc9c; }
-        .node.admin rect { stroke: #f39c12; }
-        .node.finance rect { stroke: #f39c12; }
-        .node.procurement rect { stroke: #f39c12; }
-        .node.hr rect { stroke: #f39c12; }
+        .node text {
+            font-size: 12px;
+            font-weight: 500;
+            paint-order: stroke;
+            stroke: #fff;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-        .zoom-controls {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
+        .node .role-label {
+            font-size: 10px;
+            fill: var(--text-sub);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            paint-order: stroke;
+            stroke: #fff;
+            stroke-width: 3px;
+        }
+
+        /* Vertical List Style (Mobile/Clean Line Design) */
+        .org-item {
+            position: relative;
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--line);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 0.25rem;
+            transition: background-color 0.2s;
         }
 
-        .zoom-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+        .org-item.tier-0 { background-color: rgba(37, 99, 235, 0.05); } /* Very Light Blue */
+        .org-item.tier-1 { background-color: rgba(5, 150, 105, 0.05); } /* Very Light Green */
+        .org-item.tier-2 { background-color: rgba(217, 119, 6, 0.05); } /* Very Light Amber */
+        .org-item.tier-3 { background-color: rgba(124, 58, 237, 0.05); } /* Very Light Purple */
+        .org-item.tier-4 { background-color: rgba(219, 39, 119, 0.05); } /* Very Light Pink */
+        .org-item.tier-5 { background-color: rgba(75, 85, 99, 0.05); }  /* Very Light Gray */
+
+        .org-item:last-child {
+            border-bottom: none;
         }
 
-        .zoom-btn:hover {
-            background: #667eea;
-            color: white;
-        }
+        .org-item.depth-0 { padding-left: 0; }
+        .org-item.depth-1 { padding-left: 1.5rem; }
+        .org-item.depth-2 { padding-left: 3rem; }
+        .org-item.depth-3 { padding-left: 4.5rem; }
+        .org-item.depth-4 { padding-left: 6rem; }
 
-        /* Modal for editing */
-        .modal-overlay {
-            position: fixed;
+        .org-item::before {
+            content: '';
+            position: absolute;
+            left: calc(var(--depth, 0) * 1.5rem - 0.75rem);
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+            bottom: 0;
+            width: 1px;
+            background-color: var(--line);
         }
 
-        .modal-overlay.active {
-            display: flex;
+        .org-item .role {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .modal {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            width: 400px;
-            max-width: 90%;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        .modal h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-            color: #555;
+        .org-item .name {
+            font-size: 1.125rem;
             font-weight: 500;
         }
 
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 0.95rem;
+        .org-item .contact {
+            font-size: 0.875rem;
+            color: var(--text-sub);
         }
 
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: #667eea;
+        .org-item .status-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.125rem 0.375rem;
+            background: #fee2e2;
+            color: #991b1b;
+            border-radius: 9999px;
+            width: fit-content;
+            margin-top: 0.25rem;
         }
 
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
-
-        .btn-save {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-save:hover {
-            background: #5a6fd6;
-        }
-
-        .btn-cancel {
-            background: #e0e0e0;
-            color: #555;
-        }
-
-        .btn-cancel:hover {
-            background: #d0d0d0;
-        }
-
-        .btn-delete {
-            background: #e74c3c;
-            color: white;
-        }
-
-        .btn-delete:hover {
-            background: #c0392b;
-        }
-
-        .tooltip {
-            position: absolute;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 100;
-        }
-
-        .mode-indicator {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #667eea;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            display: none;
-        }
-
-        .mode-indicator.active {
-            display: block;
-        }
-
-        .instructions {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(255,255,255,0.95);
-            padding: 12px 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            font-size: 0.85rem;
-            color: #555;
-            max-width: 280px;
-            z-index: 50;
-        }
-
-        .instructions h4 {
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .instructions ul {
-            margin-left: 16px;
-        }
-
-        .instructions li {
-            margin-bottom: 4px;
-        }
-
-        .view-controls {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            z-index: 50;
-            background: rgba(255,255,255,0.95);
-            padding: 12px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-
-        .view-btn {
-            padding: 8px 14px;
-            border: none;
-            border-radius: 6px;
-            background: #f5f5f5;
-            cursor: pointer;
-            font-size: 0.85rem;
-            color: #444;
-            transition: all 0.2s;
-            text-align: left;
-            white-space: nowrap;
-        }
-
-        .view-btn:hover {
-            background: #667eea;
-            color: white;
-            transform: translateX(-2px);
-        }
-
-        .view-btn:active {
-            transform: scale(0.98);
-        }
-
-        .layout-indicator {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            background: rgba(102, 126, 234, 0.9);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            z-index: 50;
-            display: none;
-        }
-
-        .layout-indicator.active {
-            display: block;
+        @media (max-width: 768px) {
+            #desktop-view { display: none; }
+            #mobile-view { display: block; }
+            .controls .view-toggle { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div>
-            <h1>🌟 Eternalgy Organisation Chart</h1>
-            <span class="date">Last Updated: 10/09/2025</span>
-        </div>
-        <div class="controls">
-            <button class="btn btn-secondary" id="btn-undo" onclick="undo()" title="Undo (Ctrl+Z)">
-                <span>↩️</span> Undo
-            </button>
-            <button class="btn btn-secondary" id="btn-redo" onclick="redo()" title="Redo (Ctrl+Shift+Z)">
-                <span>↪️</span> Redo
-            </button>
-            <button class="btn btn-secondary" id="btn-add" onclick="showAddModal()">
-                <span>➕</span> Add
-            </button>
-            <button class="btn btn-secondary" id="btn-edit-mode" onclick="toggleEditMode()">
-                <span>✏️</span> Edit
-            </button>
-            <button class="btn btn-primary" onclick="exportData()">
-                <span>💾</span> Export
-            </button>
-        </div>
+
+<div class="floating-menu">
+    <div id="menu-drawer" class="drawer">
+        <h3>View Mode</h3>
+        <button id="btn-desktop" class="active" onclick="setView('desktop')">Desktop (Tree)</button>
+        <button id="btn-mobile" onclick="setView('mobile')">Mobile (List)</button>
+        <hr style="margin: 8px 0; border: none; border-top: 1px solid #eee;">
+        <button onclick="window.print()">Export PDF</button>
     </div>
+    <button class="menu-btn" onclick="toggleDrawer()">☰</button>
+</div>
 
-    <div id="chart-container"></div>
-    
-    <div class="mode-indicator" id="mode-indicator">
-        ✏️ Edit Mode: Click node to edit, drag to move
-    </div>
+<div id="desktop-view"></div>
+<div id="mobile-view"></div>
 
-    <div class="layout-indicator" id="layout-indicator">
-        📋 Vertical Layout (HODs Only)
-    </div>
+<script src="data.js"></script>
+<script>
+    function toggleDrawer() {
+        document.getElementById('menu-drawer').classList.toggle('active');
+    }
 
-    <div class="view-controls">
-        <button class="view-btn" onclick="showOnlyHODs()">👔 Show HODs Only</button>
-        <button class="view-btn" onclick="expandAllNodes()">📂 Expand All</button>
-        <button class="view-btn" onclick="collapseAllNodes()">📁 Collapse All</button>
-    </div>
+    function setView(mode) {
+        const dv = document.getElementById('desktop-view');
+        const mv = document.getElementById('mobile-view');
+        const btnD = document.getElementById('btn-desktop');
+        const btnM = document.getElementById('btn-mobile');
 
-    <div class="instructions" id="instructions">
-        <h4>📖 How to use:</h4>
-        <ul>
-            <li><strong>Scroll</strong> to zoom</li>
-            <li><strong>Drag</strong> background to pan</li>
-            <li><strong>Click +/−</strong> to expand/collapse</li>
-            <li><strong>HODs Only</strong> = vertical stack</li>
-            <li><strong>Expand All</strong> = horizontal tree</li>
-        </ul>
-    </div>
+        if (mode === 'desktop') {
+            dv.style.display = 'block';
+            mv.style.display = 'none';
+            btnD.classList.add('active');
+            btnM.classList.remove('active');
+            renderDesktop();
+        } else {
+            dv.style.display = 'none';
+            mv.style.display = 'block';
+            btnD.classList.remove('active');
+            btnM.classList.add('active');
+            renderMobile();
+        }
+        document.getElementById('menu-drawer').classList.remove('active');
+    }
 
-    <div class="zoom-controls">
-        <button class="zoom-btn" onclick="zoomIn()">+</button>
-        <button class="zoom-btn" onclick="resetZoom()">⌂</button>
-        <button class="zoom-btn" onclick="zoomOut()">−</button>
-    </div>
+    // DESKTOP RENDERER (Clean Lines / Full Screen Stretch)
+    function renderDesktop() {
+        const container = d3.select("#desktop-view");
+        container.selectAll("*").remove();
 
-    <div class="tooltip" id="tooltip"></div>
+        const width = window.innerWidth;
+        const height = window.innerHeight; // FULL SCREEN HEIGHT
 
-    <!-- Edit Modal -->
-    <div class="modal-overlay" id="edit-modal">
-        <div class="modal">
-            <h2>Edit Employee</h2>
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" id="edit-name" placeholder="Employee Name">
-            </div>
-            <div class="form-group">
-                <label>Role/Title</label>
-                <input type="text" id="edit-role" placeholder="Job Title">
-            </div>
-            <div class="form-group">
-                <label>Contact</label>
-                <input type="text" id="edit-contact" placeholder="Phone Number">
-            </div>
-            <div class="form-group">
-                <label>Reports To (Manager)</label>
-                <select id="edit-parent">
-                    <option value="">-- No Manager (Top Level) --</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Department</label>
-                <select id="edit-dept">
-                    <option value="ceo">CEO</option>
-                    <option value="gm">General Manager</option>
-                    <option value="cao">Chief Admin Officer</option>
-                    <option value="training">Training/Marketing</option>
-                    <option value="event">Event</option>
-                    <option value="project">Project</option>
-                    <option value="om">O&M</option>
-                    <option value="engineering">Engineering</option>
-                    <option value="it">IT</option>
-                    <option value="admin">Admin</option>
-                    <option value="finance">Finance</option>
-                    <option value="procurement">Procurement</option>
-                    <option value="hr">HR</option>
-                </select>
-            </div>
-            <div class="modal-actions">
-                <button class="btn btn-delete" onclick="deleteNode()">Delete</button>
-                <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
-                <button class="btn btn-save" onclick="saveNode()">Save</button>
-            </div>
-        </div>
-    </div>
+        const svg = container.append("svg")
+            .attr("width", width)
+            .attr("height", height);
 
-    <!-- Add Modal -->
-    <div class="modal-overlay" id="add-modal">
-        <div class="modal">
-            <h2>Add New Employee</h2>
-            <div class="form-group">
-                <label>Name *</label>
-                <input type="text" id="add-name" placeholder="Employee Name">
-            </div>
-            <div class="form-group">
-                <label>Role/Title *</label>
-                <input type="text" id="add-role" placeholder="Job Title">
-            </div>
-            <div class="form-group">
-                <label>Contact</label>
-                <input type="text" id="add-contact" placeholder="Phone Number">
-            </div>
-            <div class="form-group">
-                <label>Reports To (Manager)</label>
-                <select id="add-parent">
-                    <option value="">-- No Manager (Top Level) --</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Department</label>
-                <select id="add-dept">
-                    <option value="ceo">CEO</option>
-                    <option value="gm">General Manager</option>
-                    <option value="cao">Chief Admin Officer</option>
-                    <option value="training">Training/Marketing</option>
-                    <option value="event">Event</option>
-                    <option value="project">Project</option>
-                    <option value="om">O&M</option>
-                    <option value="engineering">Engineering</option>
-                    <option value="it">IT</option>
-                    <option value="admin">Admin</option>
-                    <option value="finance">Finance</option>
-                    <option value="procurement">Procurement</option>
-                    <option value="hr">HR</option>
-                </select>
-            </div>
-            <div class="modal-actions">
-                <button class="btn btn-cancel" onclick="closeAddModal()">Cancel</button>
-                <button class="btn btn-save" onclick="addNode()">Add Employee</button>
-            </div>
-        </div>
-    </div>
+        const g = svg.append("g").attr("transform", "translate(100, 0)");
 
-    <script src="./data.js"></script>
-    <script src="./app.js"></script>
+        // MAXIMIZED VERTICAL STRETCH
+        const tree = d3.tree()
+            .size([height - 60, width - 500]) // Utilize full vertical space with small padding
+            .separation((a, b) => {
+                // Generous vertical separation to prevent overlaps
+                if (a.depth === 1) return 6;
+                if (a.depth === 2) return 4;
+                return (a.parent == b.parent ? 3.5 : 5); 
+            });
+
+        const root = d3.hierarchy(orgData);
+        tree(root);
+
+        // STAGGERING LOGIC: Split Tier 3 into 3.1 and 3.2 horizontally
+        const staggerWidth = 160; 
+        root.descendants().forEach(d => {
+            if (d.depth === 3) {
+                // Find index among siblings to alternate
+                const siblings = d.parent ? d.parent.children : [];
+                const index = siblings.indexOf(d);
+                if (index % 2 !== 0) {
+                    d.y += staggerWidth; // This becomes Tier 3.2
+                }
+            } else if (d.depth >= 4) {
+                // All nodes from Tier 4 onwards must move to clear Tier 3.2
+                d.y += staggerWidth;
+            }
+        });
+
+        // Color palette for tiers
+        const tierColors = ["#2563eb", "#059669", "#d97706", "#7c3aed", "#db2777", "#444"];
+
+        // Links
+        g.selectAll(".link")
+            .data(root.links())
+            .enter().append("path")
+            .attr("class", "link")
+            .attr("stroke", d => tierColors[d.source.depth] || "#ccc")
+            .attr("d", d3.linkHorizontal()
+                .x(d => d.y)
+                .y(d => d.x)); // Removed +50 offset to align with center-grouped text
+
+        // Nodes
+        const node = g.selectAll(".node")
+            .data(root.descendants())
+            .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", d => `translate(${d.y},${d.x})`);
+
+        node.append("circle")
+            .attr("r", 4)
+            .style("fill", "#fff")
+            .style("stroke", "#000")
+            .style("stroke-width", "2px");
+
+        // "STICK TOGETHER" grouping: Role and Name are close, aligned vertically to the circle
+        
+        // Role (Designation) - Higher up but close to name
+        node.append("text")
+            .attr("dy", "-0.2em") 
+            .attr("x", 12)
+            .attr("class", "role-label")
+            .text(d => d.data.role);
+
+        // Name - Directly below role
+        node.append("text")
+            .attr("dy", "1.0em") 
+            .attr("x", 12)
+            .style("font-weight", "600")
+            .style("font-size", "12px")
+            .text(d => d.data.name);
+
+        // Contact (if any) - Further down
+        node.append("text")
+            .attr("dy", "2.2em")
+            .attr("x", 12)
+            .style("fill", "#666")
+            .style("font-size", "9px")
+            .text(d => d.data.contact);
+    }
+
+    // MOBILE RENDERER (Clean Vertical List with Lines)
+    function renderMobile() {
+        const container = document.getElementById('mobile-view');
+        container.innerHTML = '';
+
+        function traverse(node, depth = 0) {
+            const item = document.createElement('div');
+            item.className = `org-item depth-${depth} tier-${depth}`;
+            item.style.setProperty('--depth', depth);
+
+            let html = `
+                <div class="role">${node.role}</div>
+                <div class="name">${node.name}</div>
+            `;
+            
+            if (node.contact) {
+                html += `<div class="contact">${node.contact}</div>`;
+            }
+
+            if (node.name === 'TBD') {
+                html += `<div class="status-tag">RECRUITING</div>`;
+            }
+
+            item.innerHTML = html;
+            container.appendChild(item);
+
+            if (node.children) {
+                node.children.forEach(child => traverse(child, depth + 1));
+            }
+        }
+
+        traverse(orgData);
+    }
+
+    // Initial load
+    window.onload = () => {
+        if (window.innerWidth < 768) {
+            setView('mobile');
+        } else {
+            setView('desktop');
+        }
+    };
+
+    window.onresize = () => {
+        if (document.getElementById('desktop-view').style.display === 'block') {
+            renderDesktop();
+        }
+    };
+</script>
+
 </body>
 </html>
