@@ -1,14 +1,14 @@
-// Eternalgy Organisation Chart Data - Standardized Jan 2026
+// Eternalgy Organisation Chart Data - Standardized Official Names Jan 2026
 const orgData = {
     id: "ceo",
-    name: "Gan Lai Soon",
+    name: "Gan Lai Hock",
     role: "CEO / Acting Outsource Head",
     contact: "",
     dept: "ceo",
     children: [
         {
             id: "ai_kindergarten",
-            name: "Zhihong",
+            name: "Gan Zhi Hong",
             role: "AI Kindergarten Head",
             contact: "",
             dept: "it",
@@ -18,19 +18,19 @@ const orgData = {
         },
         {
             id: "gm",
-            name: "KC Lim",
+            name: "Lim Kai Zhe",
             role: "General Operations",
             contact: "",
             dept: "gm",
             children: [
                 {
                     id: "project_dept",
-                    name: "Wilson",
+                    name: "Tan Wei Sheng",
                     role: "Project Head",
                     contact: "",
                     dept: "project",
                     children: [
-                        { id: "p1", name: "Ah Zhu", role: "Site Supervisor", contact: "", dept: "project" },
+                        { id: "p1", name: "Choong Ye Hong", role: "Site Supervisor", contact: "", dept: "project" },
                         { id: "p2", name: "Xiangjun", role: "Site Supervisor", contact: "", dept: "project" },
                         { id: "p3", name: "Kaijian", role: "Site Supervisor", contact: "", dept: "project" },
                         { id: "p4", name: "Anyuan", role: "Site Supervisor", contact: "", dept: "project" }
@@ -38,31 +38,31 @@ const orgData = {
                 },
                 {
                     id: "om_dept",
-                    name: "Furoki",
+                    name: "Ahmad Faruoqi Bin Ibrahim",
                     role: "O&M Head",
                     contact: "",
                     dept: "om",
                     children: [
                         { id: "om1", name: "Jia Hao", role: "O&M Assistant", contact: "", dept: "om" },
-                        { id: "om2", name: "Weifeng", role: "O&M Assistant", contact: "", dept: "om" }
+                        { id: "om2", name: "Khoo Wei Feng", role: "O&M Assistant", contact: "", dept: "om" }
                     ]
                 },
-                { id: "eng_dept", name: "Safwan", role: "Engineering Head", contact: "", dept: "engineering" },
-                { id: "it_dept", name: "Zhihong", role: "IT Head", contact: "", dept: "it" },
+                { id: "eng_dept", name: "Ahmad Safwan Bin Ahmad Nazri", role: "Engineering Head", contact: "", dept: "engineering" },
+                { id: "it_dept", name: "Gan Zhi Hong", role: "IT Head", contact: "", dept: "it" },
                 {
                     id: "seremban_branch",
-                    name: "Zhehang",
+                    name: "Ching Zhe Hang",
                     role: "Seremban Branch Assistant Manager",
                     contact: "",
                     dept: "admin",
                     children: [
-                        { id: "jb1", name: "Jui", role: "Scrum Master", contact: "", dept: "admin" },
-                        { id: "jb2", name: "Martin", role: "Team Member", contact: "", dept: "admin" }
+                        { id: "jb1", name: "Ling Liang Kang", role: "Scrum Master", contact: "", dept: "admin" },
+                        { id: "jb2", name: "Hing Swee Chuan", role: "Team Member", contact: "", dept: "admin" }
                     ]
                 },
                 {
                     id: "ci_project",
-                    name: "Olivia",
+                    name: "Koh Chong Lee",
                     role: "C&I Project Head",
                     contact: "",
                     dept: "strategy"
@@ -72,22 +72,22 @@ const orgData = {
         },
         {
             id: "digital_marketing",
-            name: "Leon",
+            name: "Chong Kien Leong",
             role: "Digital Marketing Head / Training Head",
             contact: "",
             dept: "training",
             children: [
-                { id: "dm_assist", name: "Zhihong", role: "Assistant (Algorithms/Data)", contact: "", dept: "it" },
-                { id: "dm1", name: "Vincent", role: "Poster/Copy/Web", contact: "", dept: "training", children: [{ id: "dm_xiaomi", name: "Xiaomi", role: "Assistant", contact: "", dept: "training" }] },
-                { id: "dm2", name: "Weifeng", role: "Video/Ad Delivery", contact: "", dept: "training" },
+                { id: "dm_assist", name: "Gan Zhi Hong", role: "Assistant (Algorithms/Data)", contact: "", dept: "it" },
+                { id: "dm1", name: "Vincent Tan Wen Xi", role: "Poster/Copy/Web", contact: "", dept: "training", children: [{ id: "dm_xiaomi", name: "Denise Ng Pei Sing", role: "Assistant", contact: "", dept: "training" }] },
+                { id: "dm2", name: "Khoo Wei Feng", role: "Video/Ad Delivery", contact: "", dept: "training" },
                 { id: "dm3", name: "Joseph", role: "Web Maintenance", contact: "", dept: "training" },
-                { id: "dm4", name: "Xiaofeng", role: "Video Shooting/Ad Coord", contact: "", dept: "training" },
-                { id: "dm5", name: "Joshua", role: "Team Member", contact: "", dept: "training" }
+                { id: "dm4", name: "Chee Kai Kian", role: "Video Shooting/Ad Coord", contact: "", dept: "training" },
+                { id: "dm5", name: "Joshua Yap Jia Hao", role: "Team Member", contact: "", dept: "training" }
             ]
         },
         {
             id: "procurement_top",
-            name: "Wei Hao",
+            name: "Wong Wei Hao",
             role: "Procurement Head",
             contact: "",
             dept: "procurement",
@@ -97,21 +97,21 @@ const orgData = {
         },
         {
             id: "strategy_top",
-            name: "Olivia",
+            name: "Koh Chong Lee",
             role: "Strategy & Partnership Head",
             contact: "",
             dept: "strategy"
         },
         {
             id: "administrative_top",
-            name: "YinChiou",
+            name: "Lai Ying Shan",
             role: "Administrative",
             contact: "",
             dept: "admin",
             children: [
                 {
                     id: "admin_dept",
-                    name: "Eli",
+                    name: "Yap Yuet Kwan",
                     role: "Admin Head",
                     contact: "",
                     dept: "admin",
@@ -121,7 +121,7 @@ const orgData = {
                 },
                 {
                     id: "finance_dept",
-                    name: "Sui",
+                    name: "Lim Shu Yee",
                     role: "Finance Head",
                     contact: "",
                     dept: "finance",
@@ -130,7 +130,7 @@ const orgData = {
                         { id: "fin2", name: "Elene", role: "Finance Assistant", contact: "", dept: "finance" }
                     ]
                 },
-                { id: "hr_dept", name: "Elise", role: "HR Head", contact: "", dept: "hr" }
+                { id: "hr_dept", name: "Yeap Jia Yih", role: "HR Head", contact: "", dept: "hr" }
             ]
         }
     ]

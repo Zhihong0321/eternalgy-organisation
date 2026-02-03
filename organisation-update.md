@@ -1,14 +1,14 @@
 # Organisation Update - January 2026
 
 **Meeting Date:** 01-31-2026
-**Document Version:** 1.4 (Moved Admin/Finance/HR to YinChiou)
+**Document Version:** 1.5 (Sync with Official Name List 6)
 
 ---
 
 ## Executive Level
 
 ### CEO (Chief Executive Officer)
-- **Name:** Gan Lai Soon
+- **Name:** Gan Lai Hock
 - **Key Responsibilities:** Overall strategy, final decision-making, acting Outsource Head.
 
 ---
@@ -17,90 +17,81 @@
 
 | Department / Role | Head of Department (HoD) | Reporting Line |
 |-------------------|--------------------------|----------------|
-| **AI Kindergarten** | **Zhihong** | Directly to CEO |
-| **General Operations** | **KC Lim** | Directly to CEO |
-| **Training Department** | **Leon** | Directly to CEO |
-| **Digital Marketing** | **Leon** | Directly to CEO |
-| **Procurement** | **Wei Hao** | Directly to CEO |
-| **Strategy & Partnership** | **Olivia** | Directly to CEO |
-| **Administrative** | **YinChiou** | Directly to CEO |
+| **AI Kindergarten** | **Gan Zhi Hong** | Directly to CEO |
+| **General Operations** | **Lim Kai Zhe** | Directly to CEO |
+| **Training Department** | **Chong Kien Leong** | Directly to CEO |
+| **Digital Marketing** | **Chong Kien Leong** | Directly to CEO |
+| **Procurement** | **Wong Wei Hao** | Directly to CEO |
+| **Strategy & Partnership** | **Koh Chong Lee** | Directly to CEO |
+| **Administrative** | **Lai Ying Shan** | Directly to CEO |
 
 ---
 
-## Administrative Hierarchy (Reporting to YinChiou)
+## Administrative Hierarchy (Reporting to Lai Ying Shan)
 
-YinChiou oversees the administrative, financial, and human resource functions.
+Lai Ying Shan oversees the administrative, financial, and human resource functions.
 
 ### 1. Administration
-- **HoD:** Eli
+- **HoD:** Yap Yuet Kwan
 - **Team Members:** Aria.
 
 ### 2. Finance
-- **HoD:** Sui
+- **HoD:** Lim Shu Yee
 - **Team Members:** Elantio, Elene.
 
 ### 3. Human Resources (HR)
-- **HoD:** Elise
+- **HoD:** Yeap Jia Yih
 
 ---
 
-## Operations Hierarchy (Reporting to KC Lim)
+## Operations Hierarchy (Reporting to Lim Kai Zhe)
 
-KC Lim oversees the core technical and operational departments.
+Lim Kai Zhe oversees the core technical and operational departments.
 
 ### 1. Project Department
-- **HoD:** Wilson
-- **Team Members:** Ah Zhu, Xiangjun, Kaijian, Anyuan.
+- **HoD:** Tan Wei Sheng
+- **Team Members:** Choong Ye Hong, Xiangjun, Kaijian, Anyuan.
 
 ### 2. O&M (Operations & Maintenance)
-- **HoD:** Furoki
-- **Team Members:** Jia Hao, Weifeng.
+- **HoD:** Ahmad Faruoqi Bin Ibrahim
+- **Team Members:** Jia Hao, Khoo Wei Feng.
 
 ### 3. Engineering
-- **HoD:** Safwan
+- **HoD:** Ahmad Safwan Bin Ahmad Nazri
 
 ### 4. IT Department
-- **HoD:** Zhihong
-- **Reporting Line:** Reports to KC Lim for IT infrastructure/support.
+- **HoD:** Gan Zhi Hong
+- **Reporting Line:** Reports to Lim Kai Zhe for IT infrastructure/support.
 
-### 5. Branch Management (JB Branch)
-- **Seremban Branch Assistant Manager:** Zhehang
-- **Scrum Master:** Jui
-- **Team Members:** Martin.
+### 5. Branch Management (Seremban)
+- **Assistant Manager:** Ching Zhe Hang
+- **Scrum Master:** Ling Liang Kang
+- **Team Members:** Hing Swee Chuan.
 
 ### 6. C&I Project
-- **HoD:** Olivia (Reporting to KC for project-specific execution).
+- **HoD:** Koh Chong Lee (Reporting to Lim Kai Zhe for project-specific execution).
 
 ---
 
-## Digital Marketing Team (Reporting to Leon)
+## Digital Marketing Team (Reporting to Chong Kien Leong)
 
-Leon heads the most value-dense department, focused on lead generation and brand image.
+Chong Kien Leong heads the most value-dense department.
 
-- **Head:** Leon
-- **Assistant:** Zhihong — Focus on algorithms and data analysis.
+- **Head:** Chong Kien Leong
+- **Assistant:** Gan Zhi Hong — Focus on algorithms and data analysis.
 - **Core Team:**
-    - **Vincent:** Posters, copy, and Google Web management.
-    - **Weifeng:** Video production and Ad delivery.
-    - **Joseph:** Google Web management (Legacy/Maintenance).
-    - **Xiaomi:** Assistant to Vincent.
-    - **Xiaofeng:** Video shooting and Ad coordination.
-    - **Joshua:** Team Member.
-
----
-
-## Procurement & Warehouse (Reporting to Wei Hao)
-
-- **Head:** Wei Hao
-- **Warehouse Assistant:** Mark (Reports to Wei Hao).
+    - **Vincent Tan Wen Xi:** Posters, copy, and Google Web management.
+    - **Khoo Wei Feng:** Video production and Ad delivery.
+    - **Joseph:** Web Maintenance.
+    - **Denise Ng Pei Sing:** Assistant to Vincent.
+    - **Chee Kai Kian:** Video shooting and Ad coordination.
+    - **Joshua Yap Jia Hao:** Team Member.
 
 ---
 
 ## Key Hierarchy Changes & Clarifications
 
-1.  **Administrative Restructuring:** The **Admin**, **Finance**, and **HR** departments have been moved from KC Lim's oversight to **YinChiou**.
-2.  **Joshua:** Moved from Project Department to **Digital Marketing / Social Media Group**.
-3.  **AI Kindergarten:** Zhihong leads this project, reporting **Directly to the CEO**.
-4.  **IT Department:** Zhihong reports to **KC Lim** for all IT infrastructure matters.
-5.  **Digital Marketing:** Zhihong assists **Leon** with algorithms and data.
-6.  **New Roles to Fill:** Recruiting for Assistant COO (to assist KC) and AI Engineer (reporting to Zhihong in AI Kindergarten).
+1.  **Official Names Sync:** All names updated to match **Name List-6.pdf**.
+2.  **Administrative Restructuring:** Admin, Finance, and HR report to **Lai Ying Shan**.
+3.  **AI Kindergarten:** Gan Zhi Hong leads this project, reporting **Directly to the CEO**.
+4.  **IT Department:** Gan Zhi Hong reports to **Lim Kai Zhe** for IT matters.
