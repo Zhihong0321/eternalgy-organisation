@@ -44,7 +44,7 @@ const orgData = {
                     dept: "om",
                     children: [
                         { id: "om1", name: "Jia Hao", role: "O&M Assistant", contact: "", dept: "om" },
-                        { id: "om2", name: "Khoo Wei Feng", role: "O&M Assistant", contact: "", dept: "om" }
+                        { id: "om2", name: "Sim Wei Feng", role: "O&M Assistant", contact: "", dept: "om" }
                     ]
                 },
                 { id: "eng_dept", name: "Ahmad Safwan Bin Ahmad Nazri", role: "Engineering Head", contact: "", dept: "engineering" },
@@ -86,7 +86,7 @@ const orgData = {
             children: [
                 { id: "dm_assist", name: "Gan Zhi Hong", role: "Assistant (Algorithms/Data)", contact: "", dept: "it" },
                 { id: "dm1", name: "Vincent Tan Wen Xi", role: "Poster/Copy/Web", contact: "", dept: "training", children: [{ id: "dm_xiaomi", name: "Denise Ng Pei Sing", role: "Assistant", contact: "", dept: "training" }] },
-                { id: "dm2", name: "Khoo Wei Feng", role: "Video/Ad Delivery", contact: "", dept: "training" },
+                { id: "dm2", name: "Sim Wei Feng", role: "Video/Ad Delivery", contact: "", dept: "training" },
                 { id: "dm3", name: "Joshua", role: "Web Maintenance", contact: "", dept: "training" },
                 { id: "dm4", name: "Chee Kai Kian", role: "Video Shooting/Ad Coord", contact: "", dept: "training" },
                 { id: "dm5", name: "Joshua Yap Jia Hao", role: "Team Member", contact: "", dept: "training" }
@@ -145,6 +145,7 @@ const orgData = {
                     ]
                 },
                 { id: "hr_dept", name: "Yeap Jia Yih", role: "HR Head", contact: "", dept: "hr" },
+                { id: "customer_service", name: "Xiao Fen", role: "Customer Service", contact: "", dept: "admin" },
                 {
                     id: "culture_happiness",
                     name: "Phil Moo",
