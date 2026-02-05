@@ -110,6 +110,13 @@ const orgData = {
             dept: "strategy"
         },
         {
+            id: "efficiency_discipline",
+            name: "Gan Zhi Hong",
+            role: "Efficiency & Discipline Head",
+            contact: "",
+            dept: "efficiency"
+        },
+        {
             id: "administrative_top",
             name: "Teoh Yin Chiou",
             role: "Administrative",
