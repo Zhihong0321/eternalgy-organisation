@@ -33,7 +33,8 @@ const orgData = {
                         { id: "p1", name: "Choong Ye Hong", role: "Site Supervisor", contact: "", dept: "project" },
                         { id: "p2", name: "Xiangjun", role: "Site Supervisor", contact: "", dept: "project" },
                         { id: "p3", name: "Kaijian", role: "Site Supervisor", contact: "", dept: "project" },
-                        { id: "p4", name: "Anyuan", role: "Site Supervisor", contact: "", dept: "project" }
+                        { id: "p4", name: "Anyuan", role: "Site Supervisor", contact: "", dept: "project" },
+                        { id: "p5", name: "Joshua", role: "Site Supervisor", contact: "", dept: "project" }
                     ]
                 },
                 {
