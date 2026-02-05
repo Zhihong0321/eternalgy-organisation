@@ -74,6 +74,13 @@ const orgData = {
                     contact: "",
                     dept: "strategy"
                 },
+{
+                    id: "culture_happiness",
+                    name: "Phil Moo",
+                    role: "Culture & Happiness Head",
+                    contact: "",
+                    dept: "culture"
+                },
                 { id: "coo_assist", name: "TBD", role: "Assistant COO", contact: "(Recruiting)", dept: "gm" }
             ]
         },
