@@ -18,7 +18,7 @@ const orgData = {
         },
         {
             id: "gm",
-            name: "Lim Kai Zhe",
+            name: "Lim Kim Chang",
             role: "General Operations",
             contact: "",
             dept: "gm",
