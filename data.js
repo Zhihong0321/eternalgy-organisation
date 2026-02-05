@@ -87,7 +87,7 @@ const orgData = {
                 { id: "dm_assist", name: "Gan Zhi Hong", role: "Assistant (Algorithms/Data)", contact: "", dept: "it" },
                 { id: "dm1", name: "Vincent Tan Wen Xi", role: "Poster/Copy/Web", contact: "", dept: "training", children: [{ id: "dm_xiaomi", name: "Denise Ng Pei Sing", role: "Assistant", contact: "", dept: "training" }] },
                 { id: "dm2", name: "Khoo Wei Feng", role: "Video/Ad Delivery", contact: "", dept: "training" },
-                { id: "dm3", name: "Joseph", role: "Web Maintenance", contact: "", dept: "training" },
+                { id: "dm3", name: "Joshua", role: "Web Maintenance", contact: "", dept: "training" },
                 { id: "dm4", name: "Chee Kai Kian", role: "Video Shooting/Ad Coord", contact: "", dept: "training" },
                 { id: "dm5", name: "Joshua Yap Jia Hao", role: "Team Member", contact: "", dept: "training" }
             ]
