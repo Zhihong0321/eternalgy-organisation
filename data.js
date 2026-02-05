@@ -74,14 +74,7 @@ const orgData = {
                     contact: "",
                     dept: "strategy"
                 },
-{
-                    id: "culture_happiness",
-                    name: "Phil Moo",
-                    role: "Culture & Happiness Head",
-                    contact: "",
-                    dept: "culture"
-                },
-                { id: "coo_assist", name: "TBD", role: "Assistant COO", contact: "(Recruiting)", dept: "gm" }
+{ id: "coo_assist", name: "TBD", role: "Assistant COO", contact: "(Recruiting)", dept: "gm" }
             ]
         },
         {
@@ -151,7 +144,14 @@ const orgData = {
                         { id: "fin2", name: "Elene", role: "Finance Assistant", contact: "", dept: "finance" }
                     ]
                 },
-                { id: "hr_dept", name: "Yeap Jia Yih", role: "HR Head", contact: "", dept: "hr" }
+                { id: "hr_dept", name: "Yeap Jia Yih", role: "HR Head", contact: "", dept: "hr" },
+                {
+                    id: "culture_happiness",
+                    name: "Phil Moo",
+                    role: "Culture & Happiness Head",
+                    contact: "",
+                    dept: "culture"
+                }
             ]
         }
     ]
