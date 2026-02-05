@@ -106,7 +106,7 @@ const orgData = {
             contact: "",
             dept: "procurement",
             children: [
-                { id: "wh_assist", name: "Mark", role: "Warehouse Assistant", contact: "", dept: "procurement" }
+                { id: "wh_assist", name: "Mad", role: "Warehouse Assistant", contact: "", dept: "procurement" }
             ]
         },
         {
